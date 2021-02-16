@@ -8,13 +8,13 @@ class Config {
     constructor (root_path, no_overrides) {
         this.root_path = root_path || cfreader.config_path;
 
-        if (process.env.HARAKA_TEST_DIR) {
-            this.root_path = path.join(process.env.HARAKA_TEST_DIR, 'config');
+        if (process.env.CONFIG_TEST_DIR) {
+            this.root_path = process.env.CONFIG_TEST_DIR;
             return;
         }
-        if (process.env.HARAKA && !no_overrides) {
+        if (process.env.CONFIG_DIR && !no_overrides) {
             this.overrides_path = root_path || cfreader.config_path;
-            this.root_path = path.join(process.env.HARAKA, 'config');
+            this.root_path = process.env.CONFIG_DIR;
         }
     }
 
